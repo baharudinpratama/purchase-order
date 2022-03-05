@@ -48,23 +48,23 @@ class PurchaseOrderController extends Controller
         ]);
 
         // Values
-        $productSellPrice = Product::select('sell_price')->where('id', $request->id_product)->first()->sell_price;
-        $ppn = $productSellPrice * 10/100;
+        $productBuyPrice = Product::select('buy_price')->where('id', $request->id_product)->first()->buy_price;
+        $ppn = $productBuyPrice * 10/100;
 
-        $dpp = $productSellPrice * $request->qty;
+        $dpp = $productBuyPrice * $request->qty;
         $total = $dpp + $ppn;
 
         // Save
-        $supplier = new PurchaseOrder;
-        $supplier->id_supplier = $request->id_supplier;
-        $supplier->id_product = $request->id_product;
-        $supplier->qty = $request->qty;
-        $supplier->dpp = $dpp;
-        $supplier->total = $total;
-        $supplier->save();
+        $purchase = new PurchaseOrder;
+        $purchase->id_supplier = $request->id_supplier;
+        $purchase->id_product = $request->id_product;
+        $purchase->qty = $request->qty;
+        $purchase->dpp = $dpp;
+        $purchase->total = $total;
+        $purchase->save();
 
         // Redirect
-        return redirect()->route('purchases.create')->with('message', 'Data supplier created successfully');
+        return redirect()->route('purchases.create')->with('message', 'Data purchase created successfully');
     }
 
     /**
