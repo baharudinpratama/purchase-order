@@ -60,7 +60,7 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdownPurchase" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ __('Purchase Order') }}
+                                {{ __('Purchase') }}
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPurchase">
@@ -71,7 +71,7 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdownSales" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ __('Sales Order') }}
+                                {{ __('Sales') }}
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownSales">
@@ -81,7 +81,7 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">{{ __('Report') }}</a>
+                            <a class="nav-link" href="{{ route('reports.index') }}">{{ __('Reports') }}</a>
                         </li>
                     </ul>
 
