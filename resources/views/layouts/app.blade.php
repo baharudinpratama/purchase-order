@@ -40,7 +40,7 @@
                             <a class="nav-link" href="{{ route('products.create') }}">{{ __('Product') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">{{ __('Supplier') }}</a>
+                            <a class="nav-link" href="{{ route('suppliers.create') }}">{{ __('Supplier') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="">{{ __('Purchase Order') }}</a>

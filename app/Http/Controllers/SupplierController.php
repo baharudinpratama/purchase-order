@@ -24,7 +24,7 @@ class SupplierController extends Controller
      */
     public function create()
     {
-        //
+        return view('supplier.create');
     }
 
     /**
@@ -35,7 +35,22 @@ class SupplierController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validation
+        $this->validate($request,[
+            'name' => ['required', 'unique:suppliers','max:64'],
+            'address' => ['required'],
+            'phone' => ['required'],
+        ]);
+
+        // Save
+        $supplier = new Supplier;
+        $supplier->name = $request->name;
+        $supplier->address = $request->address;
+        $supplier->phone = $request->phone;
+        $supplier->save();
+
+        // Redirect
+        return redirect()->route('suppliers.create')->with('message', 'Data supplier created successfully');
     }
 
     /**
