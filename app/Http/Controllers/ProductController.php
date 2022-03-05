@@ -14,7 +14,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::all();
+
+        return view('product.index', compact('products'));
     }
 
     /**
@@ -52,7 +54,7 @@ class ProductController extends Controller
         $product->save();
 
         // Redirect
-        return redirect()->route('products.create')->with('message', 'Data product created successfully');
+        return redirect()->route('products.index')->with('message', 'Data product created successfully');
     }
 
     /**
@@ -74,7 +76,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('product.edit', compact('product'));
     }
 
     /**
@@ -86,7 +88,23 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        // Validation
+        $this->validate($request,[
+            'name' => ['required', 'max:64'],
+            'buy_price' => ['required', 'numeric', 'min:1'],
+            'sell_price' => ['required', 'numeric', 'min:1'],
+            'stock' => ['required', 'numeric', 'min:0'],
+        ]);
+
+        // Update
+        $product->name = $request->name;
+        $product->buy_price = $request->buy_price;
+        $product->sell_price = $request->sell_price;
+        $product->stock = $request->stock;
+        $product->save();
+
+        // Redirect
+        return redirect()->route('products.index')->with('message', 'Data product updated successfully');
     }
 
     /**
@@ -97,6 +115,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return redirect()->route('products.index')->with('message', 'Product '.$product->name.' deleted');
     }
 }

@@ -41,9 +41,12 @@
                                 {{ __('Product') }}
                             </a>
 
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownProduct">
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownProduct">
+                                <a class="dropdown-item" href="{{ route('products.index') }}">
+                                    All Product
+                                </a>
                                 <a class="dropdown-item" href="{{ route('products.create') }}">
-                                    Create
+                                    Add Product
                                 </a>
                             </div>
                         </li>
@@ -52,9 +55,9 @@
                                 {{ __('Supplier') }}
                             </a>
 
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownSupplier">
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownSupplier">
                                 <a class="dropdown-item" href="{{ route('suppliers.create') }}">
-                                    Create
+                                    Add Supplier
                                 </a>
                             </div>
                         </li>
@@ -63,9 +66,9 @@
                                 {{ __('Purchase') }}
                             </a>
 
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPurchase">
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownPurchase">
                                 <a class="dropdown-item" href="{{ route('purchases.create') }}">
-                                    Create
+                                    Add Purchase
                                 </a>
                             </div>
                         </li>
@@ -74,9 +77,9 @@
                                 {{ __('Sales') }}
                             </a>
 
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownSales">
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownSales">
                                 <a class="dropdown-item" href="{{ route('sales.create') }}">
-                                    Create
+                                    Add Sales
                                 </a>
                             </div>
                         </li>
