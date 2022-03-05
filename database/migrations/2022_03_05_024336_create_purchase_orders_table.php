@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('id_supplier');
             $table->string('id_product');
+            $table->integer('qty');
             $table->integer('dpp');
             $table->integer('total');
             $table->timestamps();

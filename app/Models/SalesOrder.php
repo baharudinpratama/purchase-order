@@ -17,6 +17,7 @@ class SalesOrder extends Model
     protected $fillable = [
         'id_customer',
         'id_product',
+        'qty',
         'dpp',
         'total',
     ];
