@@ -36,17 +36,49 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('products.create') }}">{{ __('Product') }}</a>
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdownProduct" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ __('Product') }}
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownProduct">
+                                <a class="dropdown-item" href="{{ route('products.create') }}">
+                                    Create
+                                </a>
+                            </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('suppliers.create') }}">{{ __('Supplier') }}</a>
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdownSupplier" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ __('Supplier') }}
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownSupplier">
+                                <a class="dropdown-item" href="{{ route('suppliers.create') }}">
+                                    Create
+                                </a>
+                            </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="">{{ __('Purchase Order') }}</a>
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdownPurchase" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ __('Purchase Order') }}
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPurchase">
+                                <a class="dropdown-item" href="{{ route('purchases.create') }}">
+                                    Create
+                                </a>
+                            </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="">{{ __('Sales Order') }}</a>
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdownSales" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ __('Sales Order') }}
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownSales">
+                                <a class="dropdown-item" href="">
+                                    Create
+                                </a>
+                            </div>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="">{{ __('Report') }}</a>
