@@ -75,7 +75,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownSales">
-                                <a class="dropdown-item" href="">
+                                <a class="dropdown-item" href="{{ route('sales.create') }}">
                                     Create
                                 </a>
                             </div>

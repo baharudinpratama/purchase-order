@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
+use App\Models\Product;
 use App\Models\SalesOrder;
 use Illuminate\Http\Request;
 
@@ -24,7 +26,10 @@ class SalesOrderController extends Controller
      */
     public function create()
     {
-        //
+        $customers = Customer::all();
+        $products = Product::all();
+        
+        return view('sales.create', compact('customers', 'products'));
     }
 
     /**
@@ -35,7 +40,34 @@ class SalesOrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validation
+        $this->validate($request,[
+            'id_product' => ['required'],
+            'qty' => ['required'],
+        ]);
+
+        // Values
+        $productSellPrice = Product::select('sell_price')->where('id', $request->id_product)->first()->sell_price;
+        $ppn = $productSellPrice * 10/100;
+
+        $dpp = $productSellPrice * $request->qty;
+        $total = $dpp + $ppn;
+
+        // Save
+        $sales = new SalesOrder;
+
+        if (!empty($request->id_customer)) {
+            $sales->id_customer = $request->id_customer;
+        }
+
+        $sales->id_product = $request->id_product;
+        $sales->qty = $request->qty;
+        $sales->dpp = $dpp;
+        $sales->total = $total;
+        $sales->save();
+
+        // Redirect
+        return redirect()->route('sales.create')->with('message', 'Data sales created successfully');
     }
 
     /**
