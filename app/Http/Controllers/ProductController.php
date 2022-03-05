@@ -24,7 +24,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('product.create');
     }
 
     /**
@@ -35,7 +35,24 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validation
+        $this->validate($request,[
+            'name' => ['required', 'unique:products','max:64'],
+            'buy_price' => ['required', 'numeric', 'min:1'],
+            'sell_price' => ['required', 'numeric', 'min:1'],
+            'stock' => ['required', 'numeric', 'min:0'],
+        ]);
+
+        // Save
+        $product = new Product;
+        $product->name = $request->name;
+        $product->buy_price = $request->buy_price;
+        $product->sell_price = $request->sell_price;
+        $product->stock = $request->stock;
+        $product->save();
+
+        // Redirect
+        return redirect()->route('products.create')->with('message', 'Data product created successfully');
     }
 
     /**
